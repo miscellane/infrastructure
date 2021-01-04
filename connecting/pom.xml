@@ -4,14 +4,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+
   <groupId>com.grey.libraries</groupId>
   <artifactId>connecting</artifactId>
   <version>1.0</version>
+
 
   <inceptionYear>2019</inceptionYear>
   <properties>
     <scala.version>2.11.12</scala.version>
   </properties>
+
 
   <repositories>
     <repository>
@@ -21,6 +24,7 @@
     </repository>
   </repositories>
 
+
   <pluginRepositories>
     <pluginRepository>
       <id>scala-tools.org</id>
@@ -28,6 +32,7 @@
       <url>http://scala-tools.org/repo-releases</url>
     </pluginRepository>
   </pluginRepositories>
+
 
   <dependencies>
 
@@ -43,12 +48,28 @@
       <version>1.4.1</version>
     </dependency>
 
+    <dependency>
+      <groupId>org.scalactic</groupId>
+      <artifactId>scalactic_2.11</artifactId>
+      <version>3.2.3</version>
+    </dependency>
+    <dependency>
+      <groupId>org.scalatest</groupId>
+      <artifactId>scalatest_2.11</artifactId>
+      <version>3.2.3</version>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
 
+
   <build>
+
     <sourceDirectory>src/main/scala</sourceDirectory>
     <testSourceDirectory>src/test/scala</testSourceDirectory>
+
     <plugins>
+
       <plugin>
         <groupId>org.scala-tools</groupId>
         <artifactId>maven-scala-plugin</artifactId>
@@ -67,6 +88,7 @@
           </args>
         </configuration>
       </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-eclipse-plugin</artifactId>
@@ -84,9 +106,14 @@
           </classpathContainers>
         </configuration>
       </plugin>
+
     </plugins>
+
   </build>
+
+
   <reporting>
+
     <plugins>
       <plugin>
         <groupId>org.scala-tools</groupId>
@@ -96,6 +123,7 @@
         </configuration>
       </plugin>
     </plugins>
+
   </reporting>
 
 
