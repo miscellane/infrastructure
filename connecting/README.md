@@ -1,6 +1,83 @@
+**Notes in progress**
+
+<br>
+
 ### Connecting
 
-**Notes in progress**
+A **database connection strings** and **application CLI (Command Line Interface) credentials** reader that serves
+packages that, for example, interact with databases and/or CLI applications.  A CLI application example 
+is AWS CLI, i.e., Amazon Web Services CLI, which is used for interacting with AWS S3, 
+AWS Data Pipeline, AWS <span style="font-family:'Brush Script MT'">EMR</span>, etc.
+
+<br>
+
+#### The Configuration Files
+
+**Case:** Databases
+
+A configuration file named databases.conf is expected, and the expected in-file structure is
+
+```yaml
+    databases {
+    
+      sqlserver.{databasename} {
+        db = "databasename",
+        user = "username",
+        password = "***",
+        url = "jdbc:sqlserver://...windows.net:...;databaseName={databasename};encrypt=true;
+                  trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30",
+        driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver"
+      },
+      
+      redshift.{databasename} {
+        db = "databasename",
+        user = "username",
+        password = "***",
+        url = "jdbc:redshift://...eu-west-1.redshift.amazonaws.com:{portNumber}/{databasename}",
+        driver = "com.amazon.redshift.jdbc42.Driver"
+      },
+      
+      ...
+      
+    }
+    
+```
+
+<br>
+
+**Case:** Credentials
+
+A configuration file named credentials.conf is expected, and the expected in-file structure is rather flexible.  Only
+the outermost key, **credentials**, is mandatory.  The structure thereof depends on the requirements of what is being 
+served.
+
+```yaml
+    credentials { # mandatory
+    
+      # Sometimes greyhypotheses packages read & process data stored 
+      # in AWS S3. The keys ...      
+      aws { # Example: For AWS
+        
+        alpha { # user alpha 
+          password = "***",
+          accessKey = "***",
+          secretKey = "***"
+        },
+        
+        beta { # user beta
+          password = "***",
+          accessKey = "***",
+          secretKey = "***"
+        },
+        
+        ...
+        
+      },
+      
+      ...
+       
+    }
+```
 
 <br>
 
