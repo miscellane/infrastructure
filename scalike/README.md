@@ -1,6 +1,10 @@
-### Scalike
-
 **Notes in progress**
+
+<br>
+
+### ScalikeJDBC
+
+**Project Purpose**: For interacting with databases via [ScalikeJDBC](http://scalikejdbc.org).
 
 <br>
 
