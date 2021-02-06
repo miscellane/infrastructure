@@ -4,12 +4,13 @@
 
 ### Connecting
 
-**Project Purpose**: A configurations data reader for packages that, for example, interact with databases and/or CLI (Command Line Interface) 
-applications.  A CLI application example is AWS CLI, i.e., Amazon Web Services CLI, which is used for interacting with AWS S3, 
-AWS Data Pipeline, AWS <span style="font-family:'Brush Script MT'">EMR</span>, etc.  
+**Project Purpose**: A configurations data file reader, and parameters set builder,  for packages that interact with 
+databases and/or CLI (Command Line Interface) applications.  A CLI application example is AWS CLI, i.e., 
+[Amazon Web Services CLI](https://aws.amazon.com/cli/), which is used for interacting with [AWS S3](https://aws.amazon.com/s3/), 
+[AWS Data Pipeline](https://aws.amazon.com/datapipeline/), [AWS EMR](https://aws.amazon.com/emr/), etc.  
 
 Thus far, this project sets-up **database connection** and **application CLI credentials** parameters via their configuration files 
-data, as outlined in The Configuration Files section.  
+data, as outlined in [The Configuration Files](#the-configuration-files) section.  
 
 <br>
 
