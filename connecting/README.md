@@ -4,14 +4,18 @@
 
 ### Connecting
 
-A **database connection strings** and **application CLI (Command Line Interface) credentials** reader that serves
-packages that, for example, interact with databases and/or CLI applications.  A CLI application example 
-is AWS CLI, i.e., Amazon Web Services CLI, which is used for interacting with AWS S3, 
-AWS Data Pipeline, AWS <span style="font-family:'Brush Script MT'">EMR</span>, etc.
+**Project Purpose**: A configurations data reader for packages that, for example, interact with databases and/or CLI (Command Line Interface) 
+applications.  A CLI application example is AWS CLI, i.e., Amazon Web Services CLI, which is used for interacting with AWS S3, 
+AWS Data Pipeline, AWS <span style="font-family:'Brush Script MT'">EMR</span>, etc.  
+
+Thus far, this project sets-up **database connection** and **application CLI credentials** parameters via their configuration files 
+data, as outlined in The Configuration Files section.  
 
 <br>
 
 #### The Configuration Files
+
+<br>
 
 **Case:** Databases
 
