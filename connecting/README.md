@@ -1,6 +1,88 @@
+**Notes in progress**
+
+<br>
+
 ### Connecting
 
-**Notes in progress**
+**Project Purpose**: A configurations data file reader, and parameters set builder,  for packages that interact with 
+databases and/or CLI (Command Line Interface) applications.  A CLI application example is AWS CLI, i.e., 
+[Amazon Web Services CLI](https://aws.amazon.com/cli/), which is used for interacting with [AWS S3](https://aws.amazon.com/s3/), 
+[AWS Data Pipeline](https://aws.amazon.com/datapipeline/), [AWS EMR](https://aws.amazon.com/emr/), etc.  
+
+Thus far, this project sets-up **database connection** and **application CLI credentials** parameters via their configuration files 
+data, as outlined in [The Configuration Files](#the-configuration-files) section.  
+
+<br>
+
+#### The Configuration Files
+
+<br>
+
+**Case:** Databases
+
+A configuration file named databases.conf is expected, and the expected in-file structure is
+
+```yaml
+    databases {
+    
+      sqlserver.{databasename} {
+        db = "databasename",
+        user = "username",
+        password = "***",
+        url = "jdbc:sqlserver://...windows.net:...;databaseName={databasename};encrypt=true;
+                  trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30",
+        driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver"
+      },
+      
+      redshift.{databasename} {
+        db = "databasename",
+        user = "username",
+        password = "***",
+        url = "jdbc:redshift://...eu-west-1.redshift.amazonaws.com:{portNumber}/{databasename}",
+        driver = "com.amazon.redshift.jdbc42.Driver"
+      },
+      
+      ...
+      
+    }
+    
+```
+
+<br>
+
+**Case:** Credentials
+
+A configuration file named credentials.conf is expected, and the expected in-file structure is rather flexible.  Only
+the outermost key, **credentials**, is mandatory.  The structure thereof depends on the requirements of what is being 
+served.
+
+```yaml
+    credentials { # mandatory
+    
+      # Sometimes greyhypotheses packages read & process data stored 
+      # in AWS S3. The keys ...      
+      aws { # Example: For AWS
+        
+        alpha { # user alpha 
+          password = "***",
+          accessKey = "***",
+          secretKey = "***"
+        },
+        
+        beta { # user beta
+          password = "***",
+          accessKey = "***",
+          secretKey = "***"
+        },
+        
+        ...
+        
+      },
+      
+      ...
+       
+    }
+```
 
 <br>
 
