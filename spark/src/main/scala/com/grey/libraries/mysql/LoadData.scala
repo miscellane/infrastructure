@@ -1,4 +1,4 @@
-package com.grey.libraries.redshift
+package com.grey.libraries.mysql
 
 import java.sql.DriverManager
 import java.util.Properties
@@ -8,27 +8,23 @@ import com.grey.libraries.Connecting
 import scala.util.Try
 import scala.util.control.Exception
 
-class CopyData {
-
+class LoadData {
 
   // Connectivity Instance
   val connectivityServices = new Connecting()
 
+  def loadData (databaseString: String, tableVariables: Map[String, String], dropOnFailure: Boolean = false): Try[Boolean] = {
 
-  def copyData(databaseString: String, bucketString: String, tableVariables: Map[String, String],
-               dropOnFailure: Boolean = false): Try[Boolean] = {
+
+    val queryString = tableVariables("loadString")
 
 
     // Database
     val databaseValues = connectivityServices.databaseKeys(Array(databaseString))
 
 
-    // Credentials
-    val credentialsValues = connectivityServices.credentialsKeys()
-
-
     // Driver
-    Class.forName("com.amazon.redshift.jdbc.Driver")
+    Class.forName(databaseValues("driver"))
 
 
     // Properties
@@ -46,15 +42,6 @@ class CopyData {
     val statement = connection.createStatement()
 
 
-    // Statement String
-    val queryString =
-      s"""
-         |COPY ${tableVariables("tableName")}
-         |FROM '$bucketString'
-         |credentials '${credentialsValues("stringCredentials")}' ${tableVariables("uploadParameters")}
-     """.stripMargin
-
-
     // Execute
     val F: Try[Boolean] = Exception.allCatch.withTry(
       statement.execute(queryString)
@@ -65,7 +52,7 @@ class CopyData {
     // Function
     if (F.isFailure) {
       if (dropOnFailure) {
-        new com.grey.libraries.redshift.ExecuteOnly()
+        new com.grey.libraries.mysql.ExecuteOnly()
           .executeOnly(s"drop table if exists ${tableVariables("tableName")}", databaseString)
       }
       sys.error("Error: " + F.failed.get.getMessage)
@@ -75,6 +62,5 @@ class CopyData {
 
 
   }
-
 
 }
