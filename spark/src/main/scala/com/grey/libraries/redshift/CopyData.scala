@@ -55,7 +55,6 @@ class CopyData {
      """.stripMargin
 
 
-
     // Execute
     val F: Try[Boolean] = Exception.allCatch.withTry(
       statement.execute(queryString)
@@ -66,7 +65,8 @@ class CopyData {
     // Function
     if (F.isFailure) {
       if (dropOnFailure) {
-        new ExecuteOnly().executeOnly(s"drop table if exists ${tableVariables("tableName")}", databaseString)
+        new com.grey.libraries.redshift.ExecuteOnly()
+          .executeOnly(s"drop table if exists ${tableVariables("tableName")}", databaseString)
       }
       sys.error("Error: " + F.failed.get.getMessage)
     } else {
