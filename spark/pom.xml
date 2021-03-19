@@ -25,8 +25,9 @@
       <url>https://repository.mulesoft.org/nexus/content/repositories/public/</url>
     </repository>
     <repository>
-      <id>libraries</id>
-      <url>file:///${project.basedir}/../../libraries</url>
+      <id>project.local</id>
+      <name>project</name>
+      <url>file:///${project.basedir}/.m2/repository</url>
     </repository>
   </repositories>
 
