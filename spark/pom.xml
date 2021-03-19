@@ -25,9 +25,9 @@
       <url>https://repository.mulesoft.org/nexus/content/repositories/public/</url>
     </repository>
     <repository>
-      <id>project.local</id>
-      <name>project</name>
-      <url>file:///${project.basedir}/.m2/repository</url>
+      <id>fruit</id>
+      <name>plum</name>
+      <url>file:///Users/Think/.m2/repository</url>
     </repository>
   </repositories>
 
