@@ -24,11 +24,6 @@
       <name>Mulesoft</name>
       <url>https://repository.mulesoft.org/nexus/content/repositories/public/</url>
     </repository>
-    <repository>
-      <id>fruit</id>
-      <name>plum</name>
-      <url>file:///Users/Think/.m2/repository</url>
-    </repository>
   </repositories>
 
   <pluginRepositories>
