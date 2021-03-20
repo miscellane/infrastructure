@@ -15,10 +15,6 @@
 
   <repositories>
     <repository>
-      <id>libraries</id>
-      <url>file:///${project.basedir}/../../libraries</url>
-    </repository>
-    <repository>
       <id>scala-tools.org</id>
       <name>Scala-Tools Maven2 Repository</name>
       <url>http://scala-tools.org/repo-releases</url>

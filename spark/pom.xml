@@ -24,10 +24,6 @@
       <name>Mulesoft</name>
       <url>https://repository.mulesoft.org/nexus/content/repositories/public/</url>
     </repository>
-    <repository>
-      <id>libraries</id>
-      <url>file:///${project.basedir}/../../libraries</url>
-    </repository>
   </repositories>
 
   <pluginRepositories>
