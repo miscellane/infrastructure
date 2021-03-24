@@ -16,14 +16,14 @@ class CreateTable {
 
 
   // Function
-  def createTable(databaseName: String, tableVariables: Map[String, String]): Try[Boolean] = {
+  def createTable(databaseString: String, tableVariables: Map[String, String]): Try[Boolean] = {
 
 
     val queryString = tableVariables("stringCreateTable")
 
 
     // Database
-    val databaseValues: Map[String, String] = connectivityServices.databaseKeys(scala.Array(databaseName))
+    val databaseValues: Map[String, String] = connectivityServices.databaseKeys(scala.Array(databaseString))
 
 
     // Driver
