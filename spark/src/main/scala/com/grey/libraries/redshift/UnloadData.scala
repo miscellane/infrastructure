@@ -12,11 +12,11 @@ class UnloadData(spark: SparkSession) {
   val connectivityServices = new Connecting()
 
 
-  def unloadData(queryString: String, databaseName: String, numberOfPartitions: Int = 1): DataFrame = {
+  def unloadData(queryString: String, databaseString: String, numberOfPartitions: Int = 1): DataFrame = {
 
 
     // Database
-    val databaseValues = connectivityServices.databaseKeys(Array(databaseName))
+    val databaseValues = connectivityServices.databaseKeys(Array(databaseString))
 
 
     // Driver
