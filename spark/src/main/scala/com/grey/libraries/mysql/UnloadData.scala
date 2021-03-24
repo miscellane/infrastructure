@@ -1,4 +1,4 @@
-package com.grey.libraries.mssql
+package com.grey.libraries.mysql
 
 import com.grey.libraries.Connecting
 import org.apache.spark.sql.{DataFrame, SparkSession}
@@ -7,16 +7,18 @@ import scala.util.control.Exception
 
 class UnloadData(spark: SparkSession) {
 
-
   // Connectivity Instance
   val connectivityServices = new Connecting()
-
 
   def unloadData(queryString: String, databaseString: String, numberOfPartitions: Int = 1): DataFrame = {
 
 
     // Database
-    val databaseValues = connectivityServices.databaseKeys(Array(databaseString))
+    val databaseValues: Map[String, String] = connectivityServices.databaseKeys(Array(databaseString))
+
+
+    // Driver
+    Class.forName(databaseValues("driver"))
 
 
     // JDBC URL

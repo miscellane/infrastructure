@@ -15,8 +15,9 @@ class ExecuteOnly {
 
   def executeOnly(queryString: String, databaseString: String, setAutoCommit: Boolean = false): Try[Boolean] = {
 
+
     // Database
-    val databaseValues: Map[String, String] = connectivityServices.databaseKeys(scala.Array(databaseString))
+    val databaseValues: Map[String, String] = connectivityServices.databaseKeys(Array(databaseString))
 
 
     // Driver
