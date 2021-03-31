@@ -8,6 +8,10 @@ import com.grey.libraries.Connecting
 import scala.util.Try
 import scala.util.control.Exception
 
+
+/**
+  * https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-reference-jdbc-url-format.html
+  */
 class ExecuteOnly {
 
   // Connectivity Instance
