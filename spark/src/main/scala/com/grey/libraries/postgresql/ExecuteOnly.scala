@@ -11,6 +11,8 @@ import scala.util.control.Exception
 
 /**
   * Execute
+  * https://jdbc.postgresql.org/documentation/head/connect.html
+  *
   */
 class ExecuteOnly {
 
