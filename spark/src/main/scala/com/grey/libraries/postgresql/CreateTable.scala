@@ -1,6 +1,6 @@
 package com.grey.libraries.postgresql
 
-import java.sql.DriverManager
+import java.sql._
 import java.util.Properties
 
 import com.grey.libraries.Connecting
