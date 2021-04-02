@@ -1,15 +1,31 @@
 package com.grey.libraries.mysql
 
+import java.util.Properties
+
 import com.grey.libraries.Connecting
 import org.apache.spark.sql.{DataFrame, SparkSession}
 
+import scala.util.Try
 import scala.util.control.Exception
 
+
+/**
+  *
+  * @param spark: An instance of SparkSession
+  */
 class UnloadData(spark: SparkSession) {
 
   // Connectivity Instance
   val connectivityServices = new Connecting()
 
+
+  /**
+    *
+    * @param queryString: The query
+    * @param databaseString: In this case mysql.{databaseName} string
+    * @param numberOfPartitions:  The number parallel processing options
+    * @return
+    */
   def unloadData(queryString: String, databaseString: String, numberOfPartitions: Int = 1): DataFrame = {
 
 
@@ -21,19 +37,17 @@ class UnloadData(spark: SparkSession) {
     Class.forName(databaseValues("driver"))
 
 
-    // JDBC URL
-    val jdbcUrl = databaseValues("url") + ";characterEncoding=UTF-8;user=" +
-      databaseValues("user") + ";password=" + databaseValues("password")
-
-
-    // Setting additional database connection properties
-    val connectionProperties = new java.util.Properties()
-    connectionProperties.setProperty("Driver", databaseValues("driver"))
+    // Properties
+    val properties = new Properties()
+    properties.setProperty("user", databaseValues("user"))
+    properties.setProperty("password", databaseValues("password"))
+    properties.setProperty("Driver", databaseValues("driver"))
 
 
     // The data
-    val F = Exception.allCatch.withTry(
-      spark.read.option("numPartitions", numberOfPartitions).jdbc(jdbcUrl, s"($queryString) dataset", connectionProperties)
+    val F: Try[DataFrame] = Exception.allCatch.withTry(
+      spark.read.option("numPartitions", numberOfPartitions).jdbc(databaseValues("url"),
+        s"($queryString) dataset", properties)
     )
 
 

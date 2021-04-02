@@ -1,9 +1,13 @@
 package com.grey.libraries.postgresql
 
+import java.util.Properties
+
 import com.grey.libraries.Connecting
 import org.apache.spark.sql.{DataFrame, SparkSession}
 
+import scala.util.Try
 import scala.util.control.Exception
+
 
 /**
   *
@@ -22,7 +26,7 @@ class UnloadData(spark: SparkSession) {
     * @param numberOfPartitions:  The number parallel processing options
     * @return
     */
-  def unloadData(queryString: String, databaseString: String, numberOfPartitions: Int = 1): DataFrame = {
+  def unloadData(queryString: String, databaseString: String, numberOfPartitions: Int = 1): Try[DataFrame] = {
 
 
     // Database
@@ -33,19 +37,17 @@ class UnloadData(spark: SparkSession) {
     Class.forName(databaseValues("driver"))
 
 
-    // JDBC URL
-    val jdbcUrl = databaseValues("url") + ";user=" +
-      databaseValues("user") + ";password=" + databaseValues("password")
-
-
-    // Setting additional database connection properties
-    val connectionProperties = new java.util.Properties()
-    connectionProperties.setProperty("Driver", databaseValues("driver"))
+    // Properties
+    val properties = new Properties()
+    properties.setProperty("user", databaseValues("user"))
+    properties.setProperty("password", databaseValues("password"))
+    properties.setProperty("Driver", databaseValues("driver"))
 
 
     // The data
-    val F = Exception.allCatch.withTry(
-      spark.read.option("numPartitions", numberOfPartitions).jdbc(jdbcUrl, s"($queryString) dataset", connectionProperties)
+    val F: Try[DataFrame] = Exception.allCatch.withTry(
+      spark.read.option("numPartitions", numberOfPartitions).jdbc(databaseValues("url"),
+        s"($queryString) dataset", properties)
     )
 
 
@@ -53,10 +55,11 @@ class UnloadData(spark: SparkSession) {
     if (F.isFailure) {
       sys.error( "Error: " + F.failed.get.getMessage)
     } else {
-      F.get
+      F
     }
 
 
   }
+
 
 }
