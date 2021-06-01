@@ -38,7 +38,7 @@ in `pom.xml`, run
 
 ```bash
      mvn deploy:deploy-file 
-         -Dfile=scalike-1.0.jar 
+         -Dfile=hive-1.0.jar 
          -DgroupId=com.grey.libraries   # ref. <groupId>com.grey.libraries</groupId> of pom.xml
          -DartifactId=hive           # ref. <artifactId>hive</artifactId> of pom.xml
          -Dversion=1.0                  # ref. <version>1.0</version> of pom.xml
