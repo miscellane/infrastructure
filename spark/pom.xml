@@ -35,6 +35,7 @@
   </pluginRepositories>
 
   <dependencies>
+
     <dependency>
       <groupId>com.grey.libraries</groupId>
       <artifactId>connecting</artifactId>
@@ -147,7 +148,6 @@
           </execution>
         </executions>
       </plugin>
-
     </plugins>
   </build>
 
