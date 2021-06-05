@@ -49,6 +49,7 @@ The latter point means that during the program's EMR Machine launch a set of [bo
 Elastic IP Address with the machine is required.  
 
 <br>
+<br>
 
 ## Bootstrap Action
 
@@ -89,6 +90,7 @@ such that `bootstrap.json` associates the launch with the bootstrap actions scri
 The bootstrap actions commands that would associate a specified VPC Elastic IP Address with an EMR Machine must be 
 outlined within `bootstrap.sh`.  
 
+<br>
 <br>
 
 ## Underlying IP Association Software
