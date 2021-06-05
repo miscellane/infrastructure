@@ -109,9 +109,9 @@ The `.jar` is based on [InternetProtocolApp.scala](./src/main/scala/com/grey/Int
 
 <br>
 
-### The Parameter JSON
+### The Parameters JSON
 
-The `parameterValues.json` file consists of 3 parameters. Its structure is
+The `parametersValues.json` file consists of 3 parameters. Its structure is
 
 ```json
 {
