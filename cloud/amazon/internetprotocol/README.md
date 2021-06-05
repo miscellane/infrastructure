@@ -14,6 +14,8 @@ data from an Azure SQL Database a set of security conditions must be met.  In ge
 required database credentials,  an Azure SQL Database will only accept database interaction requests from an 
 IP (internet protocol) address that has been registered with the Azure SQL Database.
 
+<br>
+
 Alas, the default Amazon EMR Machine launch method randomly assigns a different IP address to an EMR Machine each 
 time a machine is launched; once the machine is terminated, the IP address is available for re-assignment 
 elsewhere in the universe.  Therefore, if we have an Amazon Data Pipeline that 
@@ -23,6 +25,8 @@ elsewhere in the universe.  Therefore, if we have an Amazon Data Pipeline that
 
 what are the options?  Due to costs, we definitely shouldn't leave an EMR Machine in an active state in 
 order to retain its randomly & automatically assigned IP address.
+
+<br>
 
 A solution is to create a VPC Elastic IP Address that is always associated with any EMR Machine that is launched to 
 run the program.  **Important** → Over time, a VPC Elastic IP Address might be associated with more than one task, 
@@ -99,13 +103,13 @@ execute the required association.
 
 <br>
 
-### internetprotocol JAR
+### The JAR
 
 The `.jar` is based on [InternetProtocolApp.scala](./src/main/scala/com/grey/InternetProtocolApp.scala)
 
 <br>
 
-### parameterValues JSON
+### The Parameter JSON
 
 The `parameterValues.json` file consists of 3 parameters. Its structure is
 
