@@ -1,13 +1,3 @@
-
-<br>
-
-* [Interacting With Services Outwith of AWS](#interacting-with-services-outwith-of-aws)
-  * [Amazon EMR Programs & Azure SQL Databases](#amazon-emr-programs--azure-sql-databases)
-  * [Bootstrap Action](#bootstrap-action)
-  * [Underlying IP Association Software](#underlying-ip-association-software)
-    * [The JAR](#the-jar)
-    * [The Parameters JSON](#the-parameters-json)
-
 <br>
 
 # Interacting With Services Outwith of AWS
@@ -15,6 +5,14 @@
 There are times whereby a program being run within an [Amazon EMR (Elastic MapReduce)](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-what-is-emr.html) machine has to 
 interact with cloud services outwith of AWS (Amazon Web Services).  For example, the program might have to read data 
 from one or more [Azure SQL Databases](https://azure.microsoft.com/en-us/products/azure-sql/database/), amongst other places.  
+
+<br>
+
+* [Amazon EMR Programs & Azure SQL Databases](#amazon-emr-programs--azure-sql-databases)
+    * [Bootstrap Action](#bootstrap-action)
+    * [Underlying IP Association Software](#underlying-ip-association-software)
+        * [The JAR](#the-jar)
+        * [The Parameters JSON](#the-parameters-json)
 
 <br>
 
