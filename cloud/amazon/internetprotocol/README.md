@@ -24,14 +24,15 @@ elsewhere in the universe.  Therefore, if we have an Amazon Data Pipeline that
 what are the options?  Due to costs, we definitely shouldn't leave an EMR Machine in an active state in 
 order to retain its randomly & automatically assigned IP address.
 
-A solution is to create a VPC Elastic IP Address that is always associated with any EMR Machine that is launched to run the program.  [**Important** → Over time, a VPC Elastic IP Address might be associated with more than one task.  
-Always ensure that the running periods of these tasks do not overlap.]  After creating a VPC Elastic IP Address, ensure that
+A solution is to create a VPC Elastic IP Address that is always associated with any EMR Machine that is launched to 
+run the program.  **Important** → Over time, a VPC Elastic IP Address might be associated with more than one task, 
+when this occurs always ensure that the running periods of these tasks do not overlap.  After creating a VPC Elastic IP 
+Address, ensure that
 
 * the VPC Elastic IP Address is registered with each Azure SQL Database that the program interacts with.
 * each time an EMR Machine is launched for the program, the machine is associated with the same VPC Elastic IP Address.
 
-The latter point means that during the program's EMR Machine launch a set of [bootstrap actions](https://docs.aws.amazon.
-com/emr/latest/ManagementGuide/emr-plan-software.html) that associate a specified VPC 
+The latter point means that during the program's EMR Machine launch a set of [bootstrap actions](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-software.html) that associate a specified VPC 
 Elastic IP Address with the machine is required.  
 
 <br>
