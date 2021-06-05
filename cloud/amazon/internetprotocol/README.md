@@ -1,5 +1,5 @@
 
-## Interacting With Services Outwith of AWS
+# Interacting With Services Outwith of AWS
 
 There are times whereby a program being run within an [Amazon EMR (Elastic MapReduce)](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-what-is-emr.html) machine has to 
 interact with cloud services outwith of AWS (Amazon Web Services).  For example, the program might have to read data 
@@ -7,7 +7,7 @@ from one or more [Azure SQL Databases](https://azure.microsoft.com/en-us/product
 
 <br>
 
-### Amazon EMR Program & Azure SQL Databases
+## Amazon EMR Program & Azure SQL Databases
 
 Focusing on interactions with databases outwith of AWS, and using Azure SQL as an example, in order to seamlessly read 
 data from an Azure SQL Database a set of security conditions must be met.  In general, and in addition to all 
@@ -24,11 +24,8 @@ elsewhere in the universe.  Therefore, if we have an Amazon Data Pipeline that
 what are the options?  Due to costs, we definitely shouldn't leave an EMR Machine in an active state in 
 order to retain its randomly & automatically assigned IP address.
 
-A solution is to create a VPC Elastic IP Address that is always associated with any EMR Machine that is launched to 
-run the program.  [Important → Over time, a VPC Elastic IP Address might be associated with more than one task.  
-Always ensure that the running periods of these tasks do not overlap.]
-
-After creating a VPC Elastic IP Address, ensure that
+A solution is to create a VPC Elastic IP Address that is always associated with any EMR Machine that is launched to run the program.  [**Important** → Over time, a VPC Elastic IP Address might be associated with more than one task.  
+Always ensure that the running periods of these tasks do not overlap.]  After creating a VPC Elastic IP Address, ensure that
 
 * the VPC Elastic IP Address is registered with each Azure SQL Database that the program interacts with.
 * each time an EMR Machine is launched for the program, the machine is associated with the same VPC Elastic IP Address.
@@ -39,7 +36,7 @@ Elastic IP Address with the machine is required.
 
 <br>
 
-### Bootstrap Action
+## Bootstrap Action
 
 In brief, assuming an EMR Machine is launched via the script →
 
@@ -80,7 +77,7 @@ outlined within `bootstrap.sh`.
 
 <br>
 
-### Underlying IP Association Software
+## Underlying IP Association Software
 
 This project creates a small software package that associates an EMR Machine with a specified VPC Elastic IP Address. 
 If `internetprotocol...jar` is the package in question, and `parametersValues.json` is the required parameters 
@@ -101,13 +98,13 @@ execute the required association.
 
 <br>
 
-#### `internetprotocol...jar-with-dependencies.jar`
+### internetprotocol JAR
 
 The `.jar` is based on [InternetProtocolApp.scala](./src/main/scala/com/grey/InternetProtocolApp.scala)
 
 <br>
 
-#### `parameterValues.json`
+### parameterValues JSON
 
 The `parameterValues.json` file consists of 3 parameters. Its structure is
 
