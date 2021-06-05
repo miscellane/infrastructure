@@ -9,10 +9,10 @@ from one or more [Azure SQL Databases](https://azure.microsoft.com/en-us/product
 <br>
 
 * [Amazon EMR Programs & Azure SQL Databases](#amazon-emr-programs--azure-sql-databases)
-    * [Bootstrap Action](#bootstrap-action)
-    * [Underlying IP Association Software](#underlying-ip-association-software)
-        * [The JAR](#the-jar)
-        * [The Parameters JSON](#the-parameters-json)
+* [Bootstrap Action](#bootstrap-action)
+* [Underlying IP Association Software](#underlying-ip-association-software)
+    * [The JAR](#the-jar)
+    * [The Parameters JSON](#the-parameters-json)
 
 <br>
 
