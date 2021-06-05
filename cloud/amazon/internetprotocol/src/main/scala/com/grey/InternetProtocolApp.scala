@@ -3,13 +3,13 @@ package com.grey
 import java.io.{File, FileInputStream}
 import net.liftweb.json.{DefaultFormats, JValue, JsonParser}
 
-import java.nio.file.{Path, Paths}
+import java.nio.file.Paths
 import scala.util.Try
 import scala.util.control.Exception
 import scala.sys.process._
 
 /**
- *
+ *  Assigns a specified VPC Elastic IP Address to an Amazon EMR Machine
  */
 object InternetProtocolApp {
 
@@ -65,16 +65,14 @@ object InternetProtocolApp {
     println(instanceIDQueryString)
 
     // Execute Query
-    // val stringOf: String = instanceIDQueryString.!!
+    val stringOf: String = instanceIDQueryString.!!
 
     // The ID of the master instance
-   //  val instanceID = stringOf.trim
+   val instanceID = stringOf.trim
 
     // Assign Elastic IP to cluster
-    /*
     val associateIPQueryString = s"""sudo aws ec2 associate-address --instance-id $instanceID --allocation-id ${T.allocationID}"""
     associateIPQueryString.!
-    */
 
   }
 
