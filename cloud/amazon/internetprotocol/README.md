@@ -1,4 +1,15 @@
 
+<br>
+
+* [Interacting With Services Outwith of AWS](#interacting-with-services-outwith-of-aws)
+  * [Amazon EMR Programs & Azure SQL Databases](#amazon-emr-programs--azure-sql-databases)
+  * [Bootstrap Action](#bootstrap-action)
+  * [Underlying IP Association Software](#underlying-ip-association-software)
+    * [The JAR](#the-jar)
+    * [The Parameters JSON](#the-parameters-json)
+
+<br>
+
 # Interacting With Services Outwith of AWS
 
 There are times whereby a program being run within an [Amazon EMR (Elastic MapReduce)](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-what-is-emr.html) machine has to 
@@ -7,7 +18,7 @@ from one or more [Azure SQL Databases](https://azure.microsoft.com/en-us/product
 
 <br>
 
-## Amazon EMR Program & Azure SQL Databases
+## Amazon EMR Programs & Azure SQL Databases
 
 Focusing on interactions with databases outwith of AWS, and using Azure SQL as an example, in order to seamlessly read 
 data from an Azure SQL Database a set of security conditions must be met.  In general, and in addition to all 
@@ -126,3 +137,7 @@ An EMR Machine is associated with a VPC Elastic IP Address via the IP address' `
 associated with any EMR Machine that is launched for the analytics program in question.  Finally, `clusterVPCID` is 
 the ID of the VPC within which the EMR instance is being launched.
 
+<br>
+<br>
+<br>
+<br>
