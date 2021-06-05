@@ -97,7 +97,19 @@ java -jar internetprotocol-assembly-0.1.jar
 
 ```
 
-execute the required association.  The `parameterValues.json` file consists of 3 parameters. Its structure is
+execute the required association.  
+
+<br>
+
+#### `internetprotocol...jar-with-dependencies.jar`
+
+The `.jar` is based on [InternetProtocolApp.scala](./src/main/scala/com/grey/InternetProtocolApp.scala)
+
+<br>
+
+#### `parameterValues.json`
+
+The `parameterValues.json` file consists of 3 parameters. Its structure is
 
 ```json
 {
@@ -107,7 +119,8 @@ execute the required association.  The `parameterValues.json` file consists of 3
 }
 ```
 
-An EMR Machine is associated with a VPC Elastic IP Address via the address' `allocationID`.  The 
-`clusterFunctionTagValue` is the tag that is always associated with an EMR Machine that is launched for the analytics 
-program in question.  Finally, ``clusterVPCID`` is the ID of the VPC within which the EMR instance is being launched.
+An EMR Machine is associated with a VPC Elastic IP Address via the IP address' `allocationID`.  Hence, the 
+`allocationID` is compulsory.  The parameter `clusterFunctionTagValue` is optional, it denotes the tag value that is always 
+associated with any EMR Machine that is launched for the analytics program in question.  Finally, `clusterVPCID` is 
+the ID of the VPC within which the EMR instance is being launched.
 
