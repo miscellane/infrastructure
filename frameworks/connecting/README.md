@@ -1,5 +1,3 @@
-**Notes in progress**
-
 <br>
 
 ### Connecting
