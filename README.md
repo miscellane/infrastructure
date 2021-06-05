@@ -13,12 +13,12 @@ via SQL (Structured Query Language).
 
 The notes of each project are within each project's section:
 
-* [connecting](./connecting/README.md)
+* [connecting](./frameworks/connecting/README.md)
 
-* [hive](./hive/README.md)
+* [hive](./frameworks/hive/README.md)
 
-* [scalike](./scalike/README.md)
+* [scalike](./frameworks/scalike/README.md)
 
-* [spark](./spark/README.md)
+* [spark](./frameworks/spark/README.md)
 
-* [commandline](./commandline/README.md)
+* [commandline](./frameworks/commandline/README.md)
