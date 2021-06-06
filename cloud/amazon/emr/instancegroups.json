@@ -1,0 +1,20 @@
+[
+  {
+    "InstanceCount": 1,
+    "Name": "Master",
+    "InstanceGroupType": "MASTER",
+    "InstanceType": "m4.2xlarge",
+    "EbsConfiguration": {
+      "EbsOptimized": true,
+      "EbsBlockDeviceConfigs": [
+        {
+          "VolumeSpecification": {
+            "VolumeType": "gp2",
+            "SizeInGB": 100
+          },
+          "VolumesPerInstance": 1
+        }
+      ]
+    }
+  }
+]

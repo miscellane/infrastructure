@@ -66,12 +66,12 @@ aws emr create-cluster
 --configurations file://configurations.json 
 --no-visible-to-all-users 
 --service-role EMR_DefaultRole 
---security-configuration 'Secure EMR S3 ...' 
+--security-configuration 'Secure EMR S3 Access' 
 --enable-debugging 
 --name '...' 
 --region eu-west-1 
 --ebs-root-volume-size 65 
---tags 'ClusterFunction=DataScienceEngineering'
+--tags 'ClusterFunction=Signals'
 
 ```
 

@@ -1,0 +1,521 @@
+{
+  "objects": [
+    {
+      "period": "1 Day",
+      "startDateTime": "2019-12-31T01:05:00",
+      "name": "Daily",
+      "id": "DefaultSchedule",
+      "type": "Schedule"
+    },
+    {
+      "failureAndRerunMode": "CASCADE",
+      "schedule": {
+        "ref": "DefaultSchedule"
+      },
+      "resourceRole": "DataPipelineDefaultResourceRoleMathematics",
+      "pipelineLogUri": "s3://.../logs/datapipeline/",
+      "role": "DataPipelineDefaultRoleMathematics",
+      "scheduleType": "cron",
+      "name": "Default",
+      "id": "Default"
+    },
+    {
+      "role": "DataPipelineDefaultRole",
+      "s3Key": "s3://.../logs/datapipeline/daily/.../#{myDate}/SUCCESS.json",
+      "name": "Pipeline Precondition",
+      "id": "PreconditionId_D8dYt",
+      "type": "S3KeyExists"
+    },
+    {
+      "name": "log4j.rootcategory",
+      "id": "PropertyId_f6Dkr",
+      "type": "Property",
+      "value": "WARN,console",
+      "key": "log4j.rootcategory"
+    },
+    {
+      "name": "log4j.appender.console",
+      "id": "PropertyId_GnL8X",
+      "type": "Property",
+      "value": "org.apache.log4j.ConsoleAppender",
+      "key": "log4j.appender.console"
+    },
+    {
+      "name": "log4.appender.console.target",
+      "id": "PropertyId_lEhJ6",
+      "type": "Property",
+      "value": "System.err",
+      "key": "log4.appender.console.target"
+    },
+    {
+      "name": "log4.appender.console.layout",
+      "id": "PropertyId_yidpn",
+      "type": "Property",
+      "value": "org.apache.log4j.PatternLayout",
+      "key": "log4.appender.console.layout"
+    },
+    {
+      "name": "log4j.appender.console.layout.ConversionPattern",
+      "id": "PropertyId_WlW6D",
+      "type": "Property",
+      "value": "%d{yy/MM/dd HH:mm:ss} %p %c{1}: %m%n",
+      "key": "log4j.appender.console.layout.ConversionPattern"
+    },
+    {
+      "name": "SparkLog4j",
+      "property": [
+        {
+          "ref": "PropertyId_f6Dkr"
+        },
+        {
+          "ref": "PropertyId_GnL8X"
+        },
+        {
+          "ref": "PropertyId_lEhJ6"
+        },
+        {
+          "ref": "PropertyId_yidpn"
+        },
+        {
+          "ref": "PropertyId_WlW6D"
+        }
+      ],
+      "id": "EmrConfigurationId_IQy9B",
+      "classification": "spark-log4j",
+      "type": "EmrConfiguration"
+    },
+    {
+      "name": "spark.serializer",
+      "id": "PropertyId_dyM4a",
+      "type": "Property",
+      "value": "org.apache.spark.serializer.KyroSerializer",
+      "key": "spark.serializer"
+    },
+    {
+      "name": "spark.dynamicAllocation.enabled",
+      "id": "PropertyId_PpouO",
+      "type": "Property",
+      "value": "false",
+      "key": "spark.dynamicAllocation.enabled"
+    },    
+    {
+      "name": "SparkDefaultsConfiguration",
+      "property": [
+        {
+          "ref": "PropertyId_dyM4a"
+        },
+        {
+          "ref": "PropertyId_PpouO"
+        }
+      ],
+      "id": "EmrConfigurationId_mKsOt",
+      "classification": "spark-defaults",
+      "type": "EmrConfiguration"
+    },
+    {
+      "name": "com.facebook.presto",
+      "id": "PropertyId_A9Lr1",
+      "type": "Property",
+      "value": "WARN",
+      "key": "com.facebook.presto"
+    },
+    {
+      "property": {
+        "ref": "PropertyId_A9Lr1"
+      },
+      "name": "PrestoLogConfiguration",
+      "id": "EmrConfigurationId_PRasM",
+      "classification": "presto-log",
+      "type": "EmrConfiguration"
+    },
+    {
+      "name": "fs.s3.enableServerSideEncryption",
+      "id": "PropertyId_tWXx0",
+      "type": "Property",
+      "value": "false",
+      "key": "fs.s3.enableServerSideEncryption"
+    },
+    {
+      "property": {
+        "ref": "PropertyId_tWXx0"
+      },
+      "name": "EMRFSConfiguration",
+      "id": "EmrConfigurationId_K7q2Z",
+      "classification": "emrfs-site",
+      "type": "EmrConfiguration"
+    },
+    {
+      "name": "fs.s3.buckets.enabled",
+      "id": "PropertyId_Kkx5w",
+      "type": "Property",
+      "value": "true",
+      "key": "fs.s3.buckets.enabled"
+    },
+    {
+      "name": "fs.s3.multipart.uploads.enabled",
+      "id": "PropertyId_RSZ5E",
+      "type": "Property",
+      "value": "true",
+      "key": "fs.s3.multipart.uploads.enabled"
+    },
+    {
+      "name": "fs.s3.multipart.clean.enabled",
+      "id": "PropertyId_JdlL9",
+      "type": "Property",
+      "value": "false",
+      "key": "fs.s3.multipart.clean.enabled"
+    },
+    {
+      "name": "fs.s3n.ssl.enabled",
+      "id": "PropertyId_NNycr",
+      "type": "Property",
+      "value": "true",
+      "key": "fs.s3n.ssl.enabled"
+    },
+    {
+      "property": [
+        {
+          "ref": "PropertyId_Kkx5w"
+        },
+        {
+          "ref": "PropertyId_RSZ5E"
+        },
+        {
+          "ref": "PropertyId_JdlL9"
+        },
+        {
+          "ref": "PropertyId_NNycr"
+        }
+      ],
+      "name": "CoreSiteConfiguratioEMR",
+      "id": "EmrConfigurationId_jkgAb",
+      "classification": "core-site",
+      "type": "EmrConfiguration"
+    },
+    {
+      "name": "hive.metastore.client.factory.class",
+      "id": "PropertyId_qPPxg",
+      "type": "Property",
+      "value": "com.amazonaws.glue.catalog.metastore.AWSGlueDataCatalogHiveClientFactory",
+      "key": "hive.metastore.client.factory.class"
+    },
+    {
+      "name": "hive.server2.enabled.doAs",
+      "id": "PropertyId_7npvI",
+      "type": "Property",
+      "value": "false",
+      "key": "hive.server2.enabled.doAs"
+    },
+    {
+      "name": "hive.users.in.admin.role",
+      "id": "PropertyId_BCzVq",
+      "type": "Property",
+      "value": "hadoop",
+      "key": "hive.users.in.admin.role"
+    },
+    {
+      "name": "hive.security.authorization.manager",
+      "id": "PropertyId_cP9wG",
+      "type": "Property",
+      "value": "org.apache.hadoop.hive.ql.security.authorization.plugin.sqlstd.SQLStdConfOnlyAuthorizeFactory",
+      "key": "hive.security.authorization.manager"
+    },
+    {
+      "name": "hive.security.metastore.authorization.manager",
+      "id": "PropertyId_hoxJm",
+      "type": "Property",
+      "value": "org.apache.hadoop.hive.ql.security.authorization.StorageBasedAuthorizationProvider,org.apache.hadoop.hive.ql.security.authorization.MetaStoreAuthzAPIAuthorizerEmbedOnly",
+      "key": "hive.security.metastore.authorization.manager"
+    },
+    {
+      "property": [
+        {
+          "ref": "PropertyId_qPPxg"
+        },
+        {
+          "ref": "PropertyId_7npvI"
+        },
+        {
+          "ref": "PropertyId_BCzVq"
+        },
+        {
+          "ref": "PropertyId_cP9wG"
+        },
+        {
+          "ref": "PropertyId_hoxJm"
+        }
+      ],
+      "name": "HiveSiteConfiguration",
+      "id": "EmrConfigurationId_bVk6Y",
+      "classification": "hive-site",
+      "type": "EmrConfiguration"
+    },
+    {
+      "name": "maximizeResourceAllocation",
+      "id": "PropertyId_ewSDF",
+      "type": "Property",
+      "value": "true",
+      "key": "maximizeResourceAllocation"
+    },
+    {
+      "name": "SparkConfiguration",
+      "property": {
+        "ref": "PropertyId_ewSDF"
+      },
+      "id": "EmrConfigurationId_MZ7JP",
+      "type": "EmrConfiguration",
+      "classification": "spark"
+    },
+    {
+      "name": "presto.version",
+      "id": "PropertyId_ZnWP3",
+      "type": "Property",
+      "value": "0.253.1",
+      "key": "presto.version"
+    },
+    {
+      "name": "PrestoConfigConfiguration",
+      "property": {
+        "ref": "PropertyId_ZnWP3"
+      },
+      "id": "EmrConfigurationId_hNqop",
+      "type": "EmrConfiguration",
+      "classification": "presto-config"
+    },
+    {
+      "volumeType": "gp2",
+      "sizeInGB": "100",
+      "name": "MasterVolumeSpecification",
+      "id": "VolumeSpecificationId_SW1p0",
+      "type": "VolumeSpecification"
+    },
+    {
+      "name": "MasterEbsBlockDeviceConfig",
+      "id": "EbsBlockDeviceConfigId_emnpw",
+      "type": "EbsBlockDeviceConfig",
+      "volumeSpecification": {
+        "ref": "VolumeSpecificationId_SW1p0"
+      }
+    },
+    {
+      "ebsOptimized": "true",
+      "name": "MasterEbsConfiguration",
+      "id": "EbsConfigurationId_9omiy",
+      "type": "EbsConfiguration",
+      "ebsBlockDeviceConfig": {
+        "ref": "EbsBlockDeviceConfigId_emnpw"
+      }
+    },
+    {
+      "subnetId": "subnet-...ebe5bf6...",
+      "masterEbsConfiguration": {
+        "ref": "EbsConfigurationId_9omiy"
+      },
+      "emrManagedSlaveSecurityGroupId": "sg-...399ffa9...",
+      "emrManagedMasterSecurityGroupId": "sg-...d1f4285...",
+      "role": "DataPipelineDefaultRoleMathematics",
+      "configuration": [
+        {
+          "ref": "EmrConfigurationId_jkgAb"
+        },
+        {
+          "ref": "EmrConfigurationId_K7q2Z"
+        },
+        {
+          "ref": "EmrConfigurationId_MZ7JP"
+        },
+        {
+          "ref": "EmrConfigurationId_mKsOt"
+        },
+        {
+          "ref": "EmrConfigurationId_IQy9B"
+        }
+      ],
+      "enableDebugging": "true",
+      "masterInstanceType": "m4.2xlarge",
+      "releaseLabel": "emr-6.3.0",
+      "type": "EmrCluster",
+      "terminateAfter": "1 Hour",      
+      "bootstrapAction": "s3://.../bootstrap.sh",
+      "schedule": {
+        "ref": "DefaultSchedule"
+      },
+      "resourceRole": "DataPipelineDefaultResourceRoleMathematics",
+      "maxActiveInstances": "1",
+      "name": "EMR Cluster",
+      "keyPair": "KeyNameString",
+      "id": "ResourceId_GBfsu",
+      "region": "eu-west-1",
+      "applications": [
+        "Hadoop",
+        "Spark",
+        "Hive",
+        "Pig",
+        "Hue"
+      ]
+    },
+    {
+      "name": "metastore.client.factory.class",
+      "id": "PropertyId_vikSR",
+      "type": "Property",
+      "value": "com.amazonaws.glue.catalog.metastore.AWSGlueDataCatalogHiveClientFactory",
+      "key": "hive.metastore.client.factory.class"
+    },
+    {
+      "property": {
+        "ref": "PropertyId_vikSR"
+      },
+      "name": "SparkHiveSiteConfiguration",
+      "id": "EmrConfigurationId_vchlo",
+      "classification": "spike-hive-site",
+      "type": "EmrConfiguration"
+    },
+    {
+      "name": "hive.metastore",
+      "id": "PropertyId_4y38B",
+      "type": "Property",
+      "value": "glue",
+      "key": "hive.metastore"
+    },
+    {
+      "name": "hive.metastore.glue.datacatalog.enabled",
+      "id": "PropertyId_zYGxQ",
+      "type": "Property",
+      "value": "true",
+      "key": "hive.metastore.glue.datacatalog.enabled"
+    },
+    {
+      "name": "hive.orc.use-column-names",
+      "id": "PropertyId_Bw3dO",
+      "type": "Property",
+      "value": "true",
+      "key": "hive.orc.use-column-names"
+    },
+    {
+      "name": "hive.parquet.use-column-names",
+      "id": "PropertyId_KhvFg",
+      "type": "Property",
+      "value": "true",
+      "key": "hive.parquet.use-column-names"
+    },
+    {
+      "name": "hive.security",
+      "id": "PropertyId_q6NRV",
+      "type": "Property",
+      "value": "sql-standard",
+      "key": "hive.security"
+    },
+    {
+      "property": [
+        {
+          "ref": "PropertyId_4y38B"
+        },
+        {
+          "ref": "PropertyId_zYGxQ"
+        },
+        {
+          "ref": "PropertyId_Bw3dO"
+        },
+        {
+          "ref": "PropertyId_KhvFg"
+        },
+        {
+          "ref": "PropertyId_q6NRV"
+        }
+      ],
+      "name": "PrestoConnectorHiveConfiguration",
+      "id": "EmrConfigurationId_PbWEL",
+      "classification": "presto-connector-hive",
+      "type": "EmrConfiguration"
+    },
+    {
+      "name": "security.authorization.manager",
+      "id": "PropertyId_fU5o8",
+      "type": "Property",
+      "value": "org.apache.hadoop.hive.ql.security.authorization.plugin.sqlstd.SQLStdHiveAuthorizerFactory",
+      "key": "hive.security.authorization.manager"
+    },
+    {
+      "name": "security.authenticator.manager",
+      "id": "PropertyId_pya7o",
+      "type": "Property",
+      "value": "org.apache.hadoop.hive.ql.security.SessionStateUserAuthenticator",
+      "key": "hive.security.authenticator.manager"
+    },
+    {
+      "name": "security.authorization.enabled",
+      "id": "PropertyId_w2Guk",
+      "type": "Property",
+      "value": "true",
+      "key": "hive.security.authorization.enabled"
+    },
+    {
+      "name": "metastore.uris",
+      "id": "PropertyId_qK4C3",
+      "type": "Property",
+      "value": " ",
+      "key": "hive.metastore.uris"
+    },
+    {
+      "name": "HiveServerConfiguration",
+      "property": [
+        {
+          "ref": "PropertyId_fU5o8"
+        },
+        {
+          "ref": "PropertyId_pya7o"
+        },
+        {
+          "ref": "PropertyId_w2Guk"
+        },
+        {
+          "ref": "PropertyId_qK4C3"
+        }
+      ],
+      "id": "EmrConfigurationId_aBUCe",
+      "classification": "hiveserver2-site",
+      "type": "EmrConfiguration"
+    },
+    {
+      "schedule": {
+        "ref": "DefaultSchedule"
+      },
+      "name": "Anenometer",
+      "step": "command-runner.jar,spark-submit,--deploy-mode,cluster,--master,yarn,--class,com.grey.AnenometerApp,--conf,spark.driver.extraJavaOptions=-Dlog4j.configuration=log4j-spark.properties,--conf,spark.executor.extraJavaOptions=-Dlog4j.configuration=log4j-spark.properties,s3://.../anenometer-jar-with-dependencies.jar,#{myDate}",
+      "id": "EmrActivityId_bkk5d",
+      "precondition": {
+        "ref": "PreconditionId_D8dYt"
+      },
+      "runsOn": {
+        "ref": "ResourceId_GBfsu"
+      },
+      "type": "EmrActivity"
+    },
+    {
+      "schedule": {
+        "ref": "DefaultSchedule"
+      },
+      "name": "SolarRadiation",
+      "step": "command-runner.jar,spark-submit,--deploy-mode,cluster,--master,yarn,--class,com.grey.SolarRadiationApp,--conf,spark.driver.extraJavaOptions=-Dlog4j.configuration=log4j-spark.properties,--conf,spark.executor.extraJavaOptions=-Dlog4j.configuration=log4j-spark.properties,s3://.../solarradiation-jar-with-dependencies.jar,#{myDate}",
+      "precondition": {
+        "ref": "PreconditionId_D8dYt"
+      },
+      "runsOn": {
+        "ref": "ResourceId_GBfsu"
+      },
+      "id": "EmrActivityId_8q4WU",
+      "type": "EmrActivity"
+    }
+  ],
+  "parameters": [
+    {
+      "default": "\"#{format(minusDays(@scheduledStartTime,1),'YYYY-MM-dd')}\"",
+      "description": "Ensures that the data sets are processed by date.",
+      "id": "myDate",
+      "type": "string"
+    }
+  ],
+  "values": {
+    "myDate": "#{format(minusDays(@scheduledStartTime,2),'YYYY-MM-dd')}"
+  }
+}
