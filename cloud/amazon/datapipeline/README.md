@@ -2,6 +2,7 @@
 
 A view of [architecture.json](https://nbviewer.jupyter.org/github/miscellane/infrastructure/blob/develop/cloud/amazon/datapipeline/architecture.json)
 
+<br>
 
 Pipeline:
 
