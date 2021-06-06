@@ -1,9 +1,9 @@
 <br>
 
-An EMR Machine launch example that
+An EMR Cluster launch example that
 
-* Associates the EMR Machine with a VPC Elastic IP Address.
-* Ensures that the machine can run spark  programs.
+* Associates the EMR Cluster with a VPC Elastic IP Address.
+* Ensures that the cluster can run spark  programs.
 * Enables all the settings required for Amazon Athena interactions.
 
 ```shell
