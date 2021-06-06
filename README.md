@@ -13,7 +13,7 @@ via SQL.
 
 Focused on templates and small software packages that ease or aid the use of cloud services & platforms
 
-* A program that automatically assigns a specific [VPC Elastic IP Address](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html) to an EMR Machine; [more](./cloud/amazon/internetprotocol)
+* A program that assigns a specified [VPC Elastic IP Address](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html) to an EMR Cluster during the cluster's launch; [more](./cloud/amazon/internetprotocol)
 
 <br>
 
