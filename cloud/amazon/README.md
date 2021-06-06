@@ -1,6 +1,6 @@
 <br>
 
-## Focusing on Amazon Web Services Cloud
+## Amazon Web Services Cloud
 
 <br>
 
