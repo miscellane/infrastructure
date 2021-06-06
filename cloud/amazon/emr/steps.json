@@ -1,0 +1,30 @@
+[
+  {
+         "Name": "Anenometer",
+         "Args": [
+             "--deploy-mode","cluster",
+             "--master","yarn",
+             "--class","com.grey.AnenometerApp",
+             "--conf","spark.driver.extraJavaOptions=-Dlog4j.configuration=log4j-spark.properties",
+             "--conf","spark.executor.extraJavaOptions=-Dlog4j.configuration=log4j-spark.properties",
+             "s3://.../anenometer-jar-with-dependencies.jar",
+             "yyyy-MM-dd"
+         ],
+         "ActionOnFailure": "CONTINUE",
+         "Type": "Spark"
+},
+{
+       "Name": "SolarRadiation",
+       "Args": [
+           "--deploy-mode","cluster",
+           "--master","yarn",
+           "--class","com.grey.SolarRadiationApp",
+           "--conf","spark.driver.extraJavaOptions=-Dlog4j.configuration=log4j-spark.properties",
+           "--conf","spark.executor.extraJavaOptions=-Dlog4j.configuration=log4j-spark.properties",
+           "s3://.../solarradiation-jar-with-dependencies.jar",
+           "yyyy-MM-dd"
+       ],
+       "ActionOnFailure": "CONTINUE",
+       "Type": "Spark"
+ }
+]
