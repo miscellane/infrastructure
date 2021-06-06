@@ -1,5 +1,10 @@
 <br>
 
+A view of [architecture.json](https://nbviewer.jupyter.org/github/miscellane/infrastructure/blob/develop/cloud/amazon/datapipeline/architecture.json)
+
+
+Pipeline:
+
 ```shell
 
   # Create a pipeline node, a code is returned
