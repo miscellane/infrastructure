@@ -1,0 +1,97 @@
+[
+  {
+    "Classification": "spark",
+    "Properties": {
+      "maximizeResourceAllocation": "true"
+    },
+    "Configurations": []
+  },
+  {
+    "Classification": "spark-defaults",
+    "Properties": {
+      "spark.serializer": "org.apache.spark.serializer.KyroSerializer",
+      "spark.dynamicAllocation.enabled": "false"
+    },
+    "Configurations": []
+  },
+  {
+    "Classification": "spark-log4j",
+    "Properties": {
+      "log4j.rootcategory": "WARN,console",
+      "log4j.appender.console": "org.apache.log4j.ConsoleAppender",
+      "log4.appender.console.target": "System.err",
+      "log4.appender.console.layout": "org.apache.log4j.PatternLayout",
+      "log4j.appender.console.layout.ConversionPattern": "%d{yy/MM/dd HH:mm:ss} %p %c{1}: %m%n"
+    },
+    "Configurations": []
+  },
+  {
+    "Classification": "spark-hive-site",
+    "Properties": {
+      "hive.metastore.client.factory.class": "com.amazonaws.glue.catalog.metastore.AWSGlueDataCatalogHiveClientFactory"
+    },
+    "Configurations": []
+  },
+  {
+    "Classification": "presto-log",
+    "Properties": {
+      "com.facebook.presto": "WARN"
+    },
+    "Configurations": []
+  },
+  {
+    "Classification": "presto-config",
+    "Properties": {
+      "presto.version": "0.253.1"
+    },
+    "Configurations": []
+  },
+  {
+    "Classification": "presto-connector-hive",
+    "Properties": {
+      "hive.metastore": "glue",
+      "hive.metastore.glue.datacatalog.enabled": "true",
+      "hive.parquet.use-column-names": "true",
+      "hive.security": "sql-standard"
+    },
+    "Configurations": []
+  },
+  {
+    "Classification": "hive-site",
+    "Properties": {
+      "hive.metastore.client.factory.class": "com.amazonaws.glue.catalog.metastore.AWSGlueDataCatalogHiveClientFactory",
+      "hive.server2.enabled.doAs": "false",
+      "hive.users.in.admin.role": "hadoop",
+      "hive.security.authorization.manager": "org.apache.hadoop.hive.ql.security.authorization.plugin.sqlstd.SQLStdConfOnlyAuthorizeFactory",
+      "hive.security.metastore.authorization.manager": "org.apache.hadoop.hive.ql.security.authorization.StorageBasedAuthorizationProvider,org.apache.hadoop.hive.ql.security.authorization.MetaStoreAuthzAPIAuthorizerEmbedOnly"
+    },
+    "Configurations": []
+  },
+  {
+    "Classification": "hiveserver2-site",
+    "Properties": {
+      "hive.security.authenticator.manager": "org.apache.hadoop.hive.ql.security.SessionStateUserAuthenticator",
+      "hive.security.authorization.enabled": "true",
+      "hive.security.authorization.manager": "org.apache.hadoop.hive.ql.security.authorization.plugin.sqlstd.SQLStdHiveAuthorizerFactory",
+      "hive.metastore.uris": ""
+    },
+    "Configurations": []
+  },
+  {
+    "Classification": "emrfs-site",
+    "Properties": {
+      "fs.s3.enableServerSideEncryption": "false"
+    },
+    "Configurations": []
+  },
+  {
+    "Classification": "core-site",
+    "Properties": {
+      "fs.s3.buckets.enabled": "true",
+      "fs.s3n.ssl.enabled": "true",
+      "fs.s3.multipart.clean.enabled": "false",
+      "fs.s3.multipart.uploads.enabled": "true"
+    },
+    "Configurations": []
+  }
+]
