@@ -2,7 +2,7 @@
   "objects": [
     {
       "period": "1 Day",
-      "startDateTime": "2019-12-31T01:05:00",
+      "startDateTime": "2021-07-01T03:00:00",
       "name": "Daily",
       "id": "DefaultSchedule",
       "type": "Schedule"
@@ -97,7 +97,7 @@
       "type": "Property",
       "value": "false",
       "key": "spark.dynamicAllocation.enabled"
-    },    
+    },
     {
       "name": "SparkDefaultsConfiguration",
       "property": [
@@ -335,7 +335,7 @@
       "masterInstanceType": "m4.2xlarge",
       "releaseLabel": "emr-6.3.0",
       "type": "EmrCluster",
-      "terminateAfter": "1 Hour",      
+      "terminateAfter": "1 Hour",
       "bootstrapAction": "s3://.../bootstrap.sh",
       "schedule": {
         "ref": "DefaultSchedule"
