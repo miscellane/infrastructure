@@ -96,17 +96,17 @@ outlined within `bootstrap.sh`.
 ## Underlying IP Association Software
 
 This project creates a small software package that associates an EMR Machine with a specified VPC Elastic IP Address. 
-If `internetprotocol...jar` is the package in question, and `parametersValues.json` is the required parameters 
-file, then the  lines
+If `internetprotocol-jar-with-dependencies.jar` is the package in question, and `parametersValues.json` is the required parameters 
+file, then the lines (`bootstrap.sh`)
 
 ```shell
 #!/bin/bash
 sudo aws configure set default.region ...
-sudo aws s3 cp  s3://.../internetprotocol-assembly-0.1.jar /home/hadoop/
+sudo aws s3 cp  s3://.../internetprotocol-jar-with-dependencies.jar /home/hadoop/
 sudo aws s3 cp  s3://.../parametersValues.json /home/hadoop/
 
 cd /home/hadoop/
-java -jar internetprotocol-assembly-0.1.jar
+java -jar internetprotocol-jar-with-dependencies.jar
 
 ```
 
