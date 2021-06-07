@@ -3,8 +3,8 @@
 ## Infrastructure
 
 <figure>
-  <img src="cloud/amazon/datapipeline/images/augmentation.png" style="float: middle;font-size: 80%;width: 85%; margin-left: 65px; margin-right: 85px">
-  <figcaption style="font-size: 0.9em;padding: 15px;text-align: left;">A simple and illustrative Amazon Data Pipeline example.  It runs a containerized software package, i.e., it runs an instance of a container image.  The image is pulled from <a href="https://hub.docker.com/r/greyhypotheses/derma/tags" target="\_blank">Docker Hub</a>. <a href="./cloud/amazon/datapipeline/augmentation.json" target="\_blank">A version of the pipeline's definition code</a> outlines the function of each `ShellCommandActivity` node; each runs one of the <a href="https://github.com/discourses/augmentation/tree/develop/infrastructure/datapipeline/scripts" target="\_blank">augmentation pipeline scripts</a>.</figcaption>
+  <img src="cloud/amazon/datapipeline/images/augmentation.png" style="float: middle;width: 85%; margin-left: 65px; margin-right: 65px">
+  <figcaption style="font-size: 0.8em;padding: 35px;text-align: left;"><b>A simple and illustrative Amazon Data Pipeline example.</b>   It runs a containerized software package, i.e., it runs an instance of a container image.  The image is pulled from <a href="https://hub.docker.com/r/greyhypotheses/derma/tags" target="\_blank">Docker Hub</a>. <a href="./cloud/amazon/datapipeline/augmentation.json" target="\_blank">A version of the pipeline's definition code</a> outlines the function of each `ShellCommandActivity` node; each runs one of the <a href="https://github.com/discourses/augmentation/tree/develop/infrastructure/datapipeline/scripts" target="\_blank">augmentation pipeline scripts</a>.</figcaption>
 </figure>
 
 <br>
