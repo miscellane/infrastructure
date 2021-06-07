@@ -2,12 +2,13 @@
 
 An EMR Cluster launch example that
 
-* Associates the EMR Cluster with a VPC Elastic IP Address.
-* Ensures that the cluster can run spark  programs.
-* Enables all the settings required for Amazon Athena interactions.
+* Associates the EMR Cluster with a VPC Elastic IP Address ([more details](https://github.com/miscellane/infrastructure/tree/develop/cloud/amazon/internetprotocol)).
+* Ensures that the cluster can run spark programs; via `steps.json`.
+* Enables all the settings required for Amazon Athena interactions; via `configurations.json`.
+
+<br>
 
 ```shell
-
   aws emr create-cluster \
   --applications Name=Hadoop Name=Hive Name=Pig Name=Spark Name=Presto \
   --ec2-attributes file://ec2attributes.json  \
@@ -27,3 +28,20 @@ An EMR Cluster launch example that
   --tags 'ClusterFunction=Signals'
 
 ```
+
+<br>
+<br>
+
+The Spark programs are outlined within `steps.json`.  Whilst testing programs/packages, setting
+
+```shell
+"ActionOnFailure": "CONTINUE"
+```
+
+within `steps.json` gives us the wherewithal to tunnel into a cluster's master node via
+
+```shell
+ssh -i KeyNameString.pem hadoop@ec2-xx-xx-xx-xx.xx-xx-x.compute.amazonaws.com
+```
+
+and hence investigate & address program/package problems.
