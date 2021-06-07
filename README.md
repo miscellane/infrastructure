@@ -36,7 +36,7 @@ Quite a variety of frameworks are used for data science, statistics, data engine
 
 Each framework project below is akin to a suite of programs that can be used for any *data project* that uses the framework; saving time and reducing/eliminating some repetitive steps.
 
-For example, the [hive](./hive/README.md) project simplifies the process of projecting a structure onto a repository of data files via [Apache Hive](https://hive.apache.org/); it more or less parameterises steps that are repeated per data project.
+For example, the [hive](./hive/README.md) project simplifies the process of projecting a structure onto a repository of data files via [Apache Hive](https://hive.apache.org/); it more or less parameterises steps that are repeated per *data project*.
 
 The notes of each project are within each project's section.
 
