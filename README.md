@@ -14,6 +14,8 @@ via SQL.
 Focused on templates and small software packages that ease or aid the use of cloud services & platforms
 
 * A program that assigns a specified [VPC Elastic IP Address](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html) to an EMR Cluster during the cluster's launch; [more](./cloud/amazon/internetprotocol)
+* An Amazon Data Pipeline [architecture example](./cloud/amazon/datapipeline); this is an infrastructure-as-code illustration.
+* An Amazon EMR (Elastic MapReduce) [cluster launch example](./cloud/amazon/emr).
 
 <br>
 
