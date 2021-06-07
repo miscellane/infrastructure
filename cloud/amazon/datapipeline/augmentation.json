@@ -1,0 +1,256 @@
+{
+  "objects": [
+    {
+      "period": "1 days",
+      "startDateTime": "2020-02-21T16:28:00",
+      "name": "Every 1 day",
+      "id": "DefaultSchedule",
+      "type": "Schedule"
+    },
+    {
+      "failureAndRerunMode": "CASCADE",
+      "schedule": {
+        "ref": "DefaultSchedule"
+      },
+      "resourceRole": "DataPipelineDefaultResourceRole",
+      "role": "DataPipelineDefaultRole",
+      "pipelineLogUri": "s3://.../datapipeline",
+      "scheduleType": "cron",
+      "name": "Default",
+      "id": "Default"
+    },
+    {
+      "role": "DataPipelineDefaultRole",
+      "imageId": "ami-...3bb...",
+      "onFail": {
+        "ref": "ActionId_4ifL7"
+      },
+      "actionOnResourceFailure": "retryNone",
+      "instanceType": "t2.micro",
+      "type": "Ec2Resource",
+      "terminateAfter": "2 Hours",
+      "schedule": {
+        "ref": "DefaultSchedule"
+      },
+      "resourceRole": "DataPipelineDefaultResourceRole",
+      "name": "PipelineResource",
+      "actionOnTaskFailure": "terminate",
+      "keyPair": "science",
+      "associatePublicIpAddress": "true",
+      "securityGroups": "default",
+      "id": "ResourceId_aNX8O",
+      "region": "us-east-1"
+    },
+    {
+      "role": "DataPipelineDefaultRole",
+      "subject": "EC2 Resource Alarm",
+      "name": "EC2 Resource Alarm",
+      "id": "ActionId_4ifL7",
+      "type": "SnsAlarm",
+      "message": "EC2 Resource Failure",
+      "topicArn": "arn:aws:sns:xx-xx-xx:...:..."
+    },
+    {
+      "schedule": {
+        "ref": "DefaultSchedule"
+      },
+      "dependsOn": [
+        {
+          "ref": "ShellCommandActivityId_CoJKg"
+        },
+        {
+          "ref": "ShellCommandActivityId_rKsr8"
+        },
+        {
+          "ref": "ShellCommandActivityId_ECFvV"
+        }
+      ],
+      "onFail": {
+        "ref": "ActionId_H3pLX"
+      },
+      "name": "run derma:augmentation",
+      "id": "ShellCommandActivityId_wczQy",
+      "runsOn": {
+        "ref": "ResourceId_aNX8O"
+      },
+      "type": "ShellCommandActivity",
+      "command": "cd ~\nbash model.sh #{myImageLength} #{myPreview}"
+    },
+    {
+      "role": "DataPipelineDefaultRole",
+      "subject": "derma:augmentation Failed",
+      "name": "run derma:augmentation alarm",
+      "id": "ActionId_H3pLX",
+      "message": "derma:augmentation run failure.",
+      "type": "SnsAlarm",
+      "topicArn": "arn:aws:sns:xx-xx-xx:...:..."
+    },
+    {
+      "schedule": {
+        "ref": "DefaultSchedule"
+      },
+      "scriptUri": "s3://.../modelpkg.sh",
+      "onFail": {
+        "ref": "ActionId_xOu4s"
+      },
+      "dependsOn": {
+        "ref": "ShellCommandActivityId_xRC62"
+      },
+      "name": "pull derma:augmentation",
+      "id": "ShellCommandActivityId_CoJKg",
+      "runsOn": {
+        "ref": "ResourceId_aNX8O"
+      },
+      "type": "ShellCommandActivity"
+    },
+    {
+      "role": "DataPipelineDefaultRole",
+      "subject": "Feature Extraction DL",
+      "name": "pull derma:augmentation Alarm",
+      "id": "ActionId_xOu4s",
+      "type": "SnsAlarm",
+      "message": "Unable to extract the augmentation package from Docker Hub.",
+      "topicArn": "arn:aws:sns:xx-xx-xx:...:..."
+    },
+    {
+      "schedule": {
+        "ref": "DefaultSchedule"
+      },
+      "dependsOn": {
+        "ref": "ShellCommandActivityId_Ur9hY"
+      },
+      "onFail": {
+        "ref": "ActionId_9bPo1"
+      },
+      "scriptUri": "s3://.../cleanup.sh",
+      "name": "Clean Up SCA",
+      "id": "ShellCommandActivityId_R6tiq",
+      "runsOn": {
+        "ref": "ResourceId_aNX8O"
+      },
+      "type": "ShellCommandActivity"
+    },
+    {
+      "role": "DataPipelineDefaultRole",
+      "subject": "Clean Up Step Failed",
+      "name": "Clean Up Alarm",
+      "id": "ActionId_9bPo1",
+      "message": "Unable to clear the instance of project data.",
+      "type": "SnsAlarm",
+      "topicArn": "arn:aws:sns:xx-xx-xx:...:..."
+    },
+    {
+      "schedule": {
+        "ref": "DefaultSchedule"
+      },
+      "scriptUri": "s3://.../files.sh",
+      "onFail": {
+        "ref": "ActionId_ETkm1"
+      },
+      "name": "Files Copy SCA",
+      "id": "ShellCommandActivityId_rKsr8",
+      "runsOn": {
+        "ref": "ResourceId_aNX8O"
+      },
+      "type": "ShellCommandActivity"
+    },
+    {
+      "role": "DataPipelineDefaultRole",
+      "subject": "Files Copy Failed",
+      "name": "Files Copy Alarm",
+      "id": "ActionId_ETkm1",
+      "message": "Unable to copy required files from Amazon S3 to an EC2 instance.",
+      "type": "SnsAlarm",
+      "topicArn": "arn:aws:sns:xx-xx-xx:...:..."
+    },
+    {
+      "schedule": {
+        "ref": "DefaultSchedule"
+      },
+      "dependsOn": {
+        "ref": "ShellCommandActivityId_wczQy"
+      },
+      "onFail": {
+        "ref": "ActionId_cSOo7"
+      },
+      "name": "Synchronise S3 SCA",
+      "runsOn": {
+        "ref": "ResourceId_aNX8O"
+      },
+      "id": "ShellCommandActivityId_Ur9hY",
+      "type": "ShellCommandActivity",
+      "command": "cd ~\nbash synchronise.sh #{myImageLength}"
+    },
+    {
+      "role": "DataPipelineDefaultRole",
+      "subject": "Syncronisation Step Failed",
+      "name": "Synchronise S3 Alarm",
+      "id": "ActionId_cSOo7",
+      "message": "The synchronisation script was unable to transfer the augmentations to Amazon S3.",
+      "type": "SnsAlarm",
+      "topicArn": "arn:aws:sns:xx-xx-xx:...:..."
+    },
+    {
+      "schedule": {
+        "ref": "DefaultSchedule"
+      },
+      "scriptUri": "s3://.../docker.sh",
+      "onFail": {
+        "ref": "ActionId_yvudW"
+      },
+      "name": "Install Docker SCA",
+      "id": "ShellCommandActivityId_xRC62",
+      "runsOn": {
+        "ref": "ResourceId_aNX8O"
+      },
+      "type": "ShellCommandActivity"
+    },
+    {
+      "role": "DataPipelineDefaultRole",
+      "subject": "Docker Installation Step Failed",
+      "name": "Install Docker Alarm",
+      "id": "ActionId_yvudW",
+      "type": "SnsAlarm",
+      "message": "The docker installation step failed.",
+      "topicArn": "arn:aws:sns:xx-xx-xx:...:..."
+    },
+    {
+      "schedule": {
+        "ref": "DefaultSchedule"
+      },
+      "onFail": {
+        "ref": "ActionId_LLVlY"
+      },
+      "scriptUri": "s3://.../directories.sh",
+      "name": "Directories SCA",
+      "id": "ShellCommandActivityId_ECFvV",
+      "runsOn": {
+        "ref": "ResourceId_aNX8O"
+      },
+      "type": "ShellCommandActivity"
+    },
+    {
+      "role": "DataPipelineDefaultRole",
+      "subject": "Directories Step Failed",
+      "name": "Directories Alarm",
+      "id": "ActionId_LLVlY",
+      "message": "The directories.sh script was unable to create the required data directories.",
+      "type": "SnsAlarm",
+      "topicArn": "arn:aws:sns:xx-xx-xx:...:..."
+    }
+  ],
+  "parameters": [
+    {
+      "description": "The required length of each prospective square image",
+      "id": "myImageLength",
+      "type": "string",
+      "default": "224"
+    },
+    {
+      "description": "Optional argument for specifying the number of images to augment.  Allows users to preview a small number of outputs. Minimum 32.",
+      "id": "myPreview",
+      "type": "string",
+      "default": "\"--preview 96\""
+    }
+  ]
+}
