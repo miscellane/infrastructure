@@ -12,7 +12,7 @@
 <br>
 <br>
 
-### Infrastructure
+## Infrastructure
 
 <br>
 
@@ -20,7 +20,7 @@
 
 <br>
 
-#### Cloud Services & Platforms
+### Cloud Services & Platforms
 
 Focused on templates and small software packages that ease or aid the use of cloud services & platforms
 
@@ -30,7 +30,7 @@ Focused on templates and small software packages that ease or aid the use of clo
 
 <br>
 
-#### Frameworks
+### Frameworks
 
 Quite a variety of frameworks are used for data science, statistics, data engineering, and machine learning engineering, e.g., [Apache Spark](https://spark.apache.org), [Apache Hive](https://hive.apache.org/), etc.  
 
