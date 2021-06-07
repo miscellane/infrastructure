@@ -4,7 +4,9 @@ A view of [architecture.json](https://nbviewer.jupyter.org/github/miscellane/inf
 
 <br>
 
-Pipeline:
+An Amazon Data Pipeline definition, e.g., `architecture.json`, is used to launch a pipeline via the commands below.  The parameter values denoted by  `PipelineName` & `PipelineCode` haveto be provided by the user; teams can set-up naming and unique identification code conventions.
+
+<br>
 
 ```shell
 
@@ -22,3 +24,5 @@ Pipeline:
   >> aws datapipeline activate-pipeline --pipeline-id {code}
 
 ```
+
+<br>
